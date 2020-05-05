@@ -63,14 +63,18 @@ public class AuthorizationController {
         authSigInButton.setOnAction(event -> {
 
             try {
+                Client.getInstance().send("authorization");
+
                 JSONObject userJson = new JSONObject();
                 userJson.put("username", login_field.getText().trim());
                 userJson.put("password", password_field.getText().trim());
 
+
+
                 // client.Client.getInstance().send(userJson.toString());
                 Client.getInstance().send(userJson.toString());
                 // String status = client.Client.getInstance().get();
-                String status = Client.getInstance().get();
+                String status = Client.getInstance(). get();
                 if (!status.equals("nobody")) {
                     openMenu(status);
                 } else {
@@ -91,7 +95,7 @@ public class AuthorizationController {
                 try {
                     Stage stage = new Stage();
                     FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
-                            "by/bsuir/client/sample/view/menuAdmin.fxml"));
+                            "/by/bsuir/client/sample/view/menuAdmin.fxml"));
                     Parent root = loader.load();
                     stage.setTitle("Меню администратора");
                     stage.setResizable(false);
@@ -113,26 +117,23 @@ public class AuthorizationController {
                     stage.setScene(new Scene(root));
                     stage.show();*/
 
+                try {
                     authSigInButton.getScene().getWindow().hide();
 
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(Controller.class.getResource("by/bsuir/client/sample/view/menuUser.fxml"));
+                    loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/menuUser.fxml"));
 
-                    try {
-                        loader.load();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    loader.load();
 
                     Parent root = loader.getRoot();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setResizable(false);
                     stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
-           //     } catch (IOException  e) {
-           //         e.printStackTrace();
-           //     }
             } else {
                 System.out.println("Повторите ввод");//дописать
             }

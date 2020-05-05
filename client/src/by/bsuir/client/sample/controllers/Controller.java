@@ -36,25 +36,39 @@ public class Controller {
     @FXML
     void initialize() {
         registration.setOnAction(actionEvent -> {
-            try {
-                Stage stage = new Stage();                                                                      //переделать пути
+              /*  Stage stage = new Stage();                                                                      //переделать пути
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
                         "by/bsuir/client/sample/view/registration.fxml")));
                 stage.setTitle("Регистрация");
                 stage.setResizable(false);
                 stage.setScene(new Scene(root));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
-               // client.Client.getInstance().send("registration");
+                stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());*/
+            try {
+                registration.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/registration.fxml"));
+
+                    loader.load();
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.setTitle("Регистрация");
+
+
                 Client.getInstance().send("registration");
                 stage.show();
-            }catch (IOException e){
-                e.printStackTrace();
-            }
+            } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         });
 
         authorization.setOnAction(actionEvent -> {
-            try {
+        /*    try {
                 Stage stage = new Stage();
                 Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource(
                         "by/bsuir/client/sample/view/authorization.fxml")));
@@ -62,13 +76,29 @@ public class Controller {
                 stage.setResizable(false);
                 stage.setScene(new Scene(root));
                 stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());
+                stage.initOwner(((Node)actionEvent.getSource()).getScene().getWindow());*/
                 //client.Client.getInstance().send("authorization");
-                Client.getInstance().send("authorization");
+
+            try {
+               authorization.getScene().getWindow().hide();
+
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/authorization.fxml"));
+
+                loader.load();
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.setTitle("Авторизация");
+
+         //       Client.getInstance().send("authorization");
                 stage.show();
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
+
         });
 
         exit.setOnAction(actionEvent -> {

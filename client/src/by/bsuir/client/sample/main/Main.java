@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/by/bsuir/client/sample/view/sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/by/bsuir/client/sample/view/sample.fxml")); //"/by/bsuir/client/sample/view/sample.fxml"
         primaryStage.setTitle("Принятие решения  в условиях риска и неопределенности");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.getIcons().add(new Image("file:src/by/bsuir/client/sample/assets/antenna.png"));

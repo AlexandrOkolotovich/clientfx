@@ -1,9 +1,9 @@
 package by.bsuir.server.actions;
 
+import by.bsuir.server.database.DataBaseHandler;
+import by.bsuir.server.database.IdGenerator;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import by.bsuir.server.database.DataBaseHandler;
 
 import java.io.*;
 import java.net.Socket;
@@ -30,6 +30,8 @@ public class Action implements Runnable {
 
             String exit = "ok";
             while (!exit.equals( "exit" )) {
+                exit = "ok";
+
                 String str = in.readLine();
                 System.out.println( "я получил: " + str );
                 String who = null;
@@ -44,38 +46,42 @@ public class Action implements Runnable {
                         who = "user";
                         break;
                     }
+                    case "back": {
+                        exit="ok";
+                        break;
+                    }
                     case "exit": {
                         exit = "exit";
                         output.close();
                         input.close();
                         break;
                     }
-                    default:break;
+                    default : break;
                 }
-                switch (who) {
-                    case "admin": {
+            /*    switch (who) {//////////////////////////////////////////
+                    case "admin":
                         exit = menuAdmin();
                         break;
-                    }
-                    case "user": {
+
+                    case "user":
                         exit = menuUser();
                         break;
-                    }
-                    case "nobody":{
+
+                    case "nobody":
                         break;
-                    }
-                    default:break;
-                }
+
+                  //  default : break;
+                }*/
             }
 
 
         }
-        catch ( ClassNotFoundException e) {
+     /*   catch ( ClassNotFoundException e) {
             e.printStackTrace();
         }
         catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*////////////////////////////////////////////////////////
         catch (IOException e) {
             e.printStackTrace();
         }
@@ -145,10 +151,11 @@ public class Action implements Runnable {
     protected void registration() {
         try {
             String user;
+
             user = in.readLine();
-            if(!user.equals( "exit" )) {
+            if(!user.equals( "back" ) || !user.equals( "registration" )) {
                 JSONObject userJson = new JSONObject( user );
-           //     int id = IdGenerator.getInstance( "user" ).getNextId();
+                int id = IdGenerator.getInstance( "user" ).getNextId();
 
                 String firstName = userJson.getString( "firstname" );
                 String lastName = userJson.getString( "lastname" );
@@ -183,7 +190,6 @@ public class Action implements Runnable {
             }
             else {
 
-
                 DataBaseHandler handler = new DataBaseHandler();
                 String sign = handler.signInUser( userName, password );
                 if(sign.equals( "nobody" )){
@@ -212,7 +218,7 @@ public class Action implements Runnable {
 
     public String menuUser() throws IOException {
         DataBaseHandler handler = new DataBaseHandler();
-        String idUser = in.readLine();
+   //     String idUser = in.readLine();
    //    String companies = handler.getCompanies(idUser); //
         String menu2 = "work";
         try {

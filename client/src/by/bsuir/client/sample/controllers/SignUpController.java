@@ -50,6 +50,7 @@ public class SignUpController {
     @FXML
     void initialize() {
         signUpButton.setOnAction(actionEvent -> {
+        //    Client.getInstance().send("registration");
 
             boolean key = true;
             JSONObject userJson = new JSONObject();
@@ -89,7 +90,7 @@ public class SignUpController {
 
         back.setOnAction(event -> {
             back.getScene().getWindow().hide();
-
+            Client.getInstance().send("back");
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/sample.fxml"));
 
