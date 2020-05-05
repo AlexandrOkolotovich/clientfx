@@ -153,7 +153,8 @@ public class Action implements Runnable {
             String user;
 
             user = in.readLine();
-            if(!user.equals( "back" ) || !user.equals( "registration" )) {
+            System.out.println( "я получил: " + user );
+            if(!user.equals( "back" ) ) {
                 JSONObject userJson = new JSONObject( user );
                 int id = IdGenerator.getInstance( "user" ).getNextId();
 
@@ -184,26 +185,45 @@ public class Action implements Runnable {
             String userName = userJson.getString( "username" );
             String password = userJson.getString( "password" );
 
-            if( userName.equals( "myadmin" ) && password.equals( "myadmin" ) ) {
+            DataBaseHandler handler = new DataBaseHandler();
+            String sign = handler.signInAdmin( userName, password );
+            if(!sign.equals("nobody")){
+                who = "admin";
+                output.write( "admin\n".getBytes() );
+                out.flush();
+                System.out.println( "я отправил: " + "admin" );
+           /*     out.write( sign + '\n' );
+                out.flush();
+                System.out.println( "я отправил: " + sign );*//////////////////////////////
+
+            }
+
+          /*  if( userName.equals( "myadmin" ) && password.equals( "myadmin" ) ) {
                 output.write( "admin\n".getBytes() );
                 who = "admin";
-            }
+            }*/
             else {
 
-                DataBaseHandler handler = new DataBaseHandler();
-                String sign = handler.signInUser( userName, password );
+                //DataBaseHandler handler = new DataBaseHandler();
+
+                 sign = handler.signInUser( userName, password );
+
                 if(sign.equals( "nobody" )){
+                    who = "nobody";
                     output.write( "nobody\n".getBytes() );
                     out.flush();
-                    who = "nobody";
-                }else {
+                    System.out.println( "я отправил: " + "nobody" );
+
+                }
+                else {
                     who = "user";
                     output.write( "user\n".getBytes() );
                     out.flush();
                     System.out.println( "я отправил: " + "user" );
-                    out.write( sign + '\n' );
+         /*           out.write( sign + '\n' );
                     out.flush();
-                    System.out.println( "я отправил: " + sign );
+                    System.out.println( "я отправил: " + sign );*//////////////////////////
+
                 }
 
             }

@@ -50,7 +50,6 @@ public class SignUpController {
     @FXML
     void initialize() {
         signUpButton.setOnAction(actionEvent -> {
-        //    Client.getInstance().send("registration");
 
             boolean key = true;
             JSONObject userJson = new JSONObject();
@@ -69,9 +68,14 @@ public class SignUpController {
                 Client.getInstance().send( userJson.toString() );
                 User user = User.getInstance();
                 try {
+                    signUpButton.getScene().getWindow().hide();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/sample.fxml"));
+
+                    loader.load();
+
+                    Parent root = loader.getRoot();
                     Stage stage = new Stage();
-                    Parent root = FXMLLoader.load( Objects.requireNonNull( getClass().getClassLoader().getResource(
-                            "by/bsuir/client/sample/view/sample.fxml" ) ) );
                     stage.setTitle( "Меню пользователя" );
                     stage.setResizable( false );
                     stage.setScene( new Scene( root ) );
@@ -92,7 +96,7 @@ public class SignUpController {
             back.getScene().getWindow().hide();
             Client.getInstance().send("back");
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/sample.fxml"));
+            loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/sample.fxml"));
 
             try {
                 loader.load();

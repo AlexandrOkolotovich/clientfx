@@ -218,38 +218,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="651" y="307" width="258" height="210" key="Github.ShareDialog/0.0.1536.824@0.0.1536.824" timestamp="1588628628199" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588698960238">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1588709005443">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588698960238" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588698960238">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588709005443" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1588709005442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588698960238" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588698960238">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588709005442" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1588709005442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588698960238" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588698960238">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588709005442" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1588709005442">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588698960238" />
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1588681866895">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588709005442" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1588708394012">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588681866895" />
-    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1588681866895">
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588708394012" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1588708394012">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588681866895" />
-    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1588681866895">
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588708394012" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1588708394012">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588681866895" />
-    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1588681866895">
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588708394012" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1588708394012">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588681866895" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588708394012" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1588444700229">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -263,19 +263,34 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/SignUpController.java</url>
-          <line>82</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
-          <line>76</line>
-          <option name="timeStamp" value="14" />
+          <line>73</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
           <line>77</line>
-          <option name="timeStamp" value="15" />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/client/sample/controllers/AuthorizationController.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

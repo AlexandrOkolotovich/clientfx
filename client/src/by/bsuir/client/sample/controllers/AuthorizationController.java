@@ -69,11 +69,8 @@ public class AuthorizationController {
                 userJson.put("username", login_field.getText().trim());
                 userJson.put("password", password_field.getText().trim());
 
-
-
-                // client.Client.getInstance().send(userJson.toString());
                 Client.getInstance().send(userJson.toString());
-                // String status = client.Client.getInstance().get();
+
                 String status = Client.getInstance(). get();
                 if (!status.equals("nobody")) {
                     openMenu(status);
@@ -93,10 +90,15 @@ public class AuthorizationController {
         public void openMenu(String status) {
             if (status.equals("admin")) {
                 try {
+                    authSigInButton.getScene().getWindow().hide();
+
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/menuAdmin.fxml"));
+
+                    loader.load();
+
+                    Parent root = loader.getRoot();
                     Stage stage = new Stage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
-                            "/by/bsuir/client/sample/view/menuAdmin.fxml"));
-                    Parent root = loader.load();
                     stage.setTitle("Меню администратора");
                     stage.setResizable(false);
                     stage.setScene(new Scene(root));
@@ -105,17 +107,8 @@ public class AuthorizationController {
                     e.printStackTrace();
                 }
             } else if (status.equals("user")) {
-            //    try {
-                    User user = User.getInstance();
-                   /* Stage stage = new Stage();
-                    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource(
-                            "by/bsuir/client/sample/view/menuUser.fxml"));
-                    Parent root = loader.load();
-                    //Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("client/FXML/MenuUser.fxml")));
-                    stage.setTitle("Меню пользователя");
-                    stage.setResizable(false);
-                    stage.setScene(new Scene(root));
-                    stage.show();*/
+
+               //     User user = User.getInstance();
 
                 try {
                     authSigInButton.getScene().getWindow().hide();

@@ -52,7 +52,7 @@ public class DataBaseHandler extends Configs {
         return userJson.toString();
     }
 
-    public ResultSet getUser(User user){
+  /*  public ResultSet getUser(User user){
         ResultSet resSet = null;
         String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_USERNAME + "=? AND " +
                 Const.USER_PASSWORD + "=?";
@@ -70,7 +70,7 @@ public class DataBaseHandler extends Configs {
         }
         return resSet;
     }
-
+*/
     public String signInUser(String login, String password) throws SQLException {
         JSONObject userJson = new JSONObject();
         User user = new User();
@@ -169,6 +169,43 @@ public class DataBaseHandler extends Configs {
             e.printStackTrace();
         }
         return String.valueOf( count );
+    }
+
+    public String signInAdmin(String login, String password) throws SQLException {
+        JSONObject userJson = new JSONObject();
+        Admin admin = new Admin();
+        String result =null;
+        try {
+            // Statement stmt = getDbConnection().createStatement();
+            String select = "SELECT * FROM "+ Const.ADMIN_TABLE + " WHERE "+ Const.ADMIN_USERNAME +
+                    "= ?";
+            PreparedStatement prSt = getDbConnection().prepareStatement(select);
+            prSt.setString(1, login);
+            //prep.setString(2, password);
+            ResultSet rs = prSt.executeQuery();
+            if (rs.next() == false) {
+
+                result = "nobody";
+            } else
+            { do {
+                admin.setID(rs.getInt(1));
+
+                admin.setUserName(rs.getString(2));
+                admin.setPassword(rs.getString(3));
+
+                userJson.put("id", admin.getID());
+                userJson.put("username", admin.getUserName());
+                userJson.put("password", admin.getPassword());
+            } while (rs.next());
+                result = userJson.toString();
+            }
+
+        } catch (ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+        //if(user.getName().equals("null")) result = user.getName();
+
+        return result;
     }
 }
 
