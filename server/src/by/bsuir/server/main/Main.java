@@ -9,8 +9,10 @@ public class Main {
 
 
     public static void main(String[] args) {
+
         MultiThreadedServer server = new MultiThreadedServer(PORT_WORK);
         new Thread(server).start();
+
         try {
             Thread monitor = new StopMonitor(PORT_STOP);
             monitor.start();

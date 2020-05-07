@@ -26,7 +26,7 @@ public final class Client {
             // писать туда же
             out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
             InputStream input  = clientSocket.getInputStream();
-            System.out.println("client.Client connected to socket.");
+            System.out.println("Client connected to socket.");
             // System.out.println("Вы что-то хотели сказать? Введите это здесь:");
             // если соединение произошло и потоки успешно созданы - мы можем
             //  работать дальше и предложить клиенту что то ввести
@@ -57,6 +57,7 @@ public final class Client {
 
             clientSocket = new Socket("localhost", 9001); // этой строкой мы запрашиваем
             clientSocket.close();
+            System.out.println("Клиент отключился от сервера");
         } catch (IOException e) {
             System.err.println(e);
         }

@@ -33,31 +33,40 @@ public class Action implements Runnable {
                 exit = "ok";
 
                 String str = in.readLine();
-                System.out.println( "я получил: " + str );
-                String who = null;
 
-                switch (str) {
-                    case "authorization": {
-                        who = authorization();
-                        break;
+                if(in!=null) {
+                    System.out.println("я получил: " + str);
+                    String who = null;
+
+                    switch (str) {
+                        case "authorization": {
+                            who = authorization();
+                            break;
+                        }
+                        case "registration": {
+                            registration();
+                            who = "user";
+                            break;
+                        }
+                        case "back": {
+                            exit = "ok";
+                            break;
+                        }
+                        case "exit": {
+                            exit = "exit";
+                            output.close();
+                            input.close();
+                            break;
+                        }
+
+                        default:
+                            break;
                     }
-                    case "registration": {
-                        registration();
-                        who = "user";
-                        break;
-                    }
-                    case "back": {
-                        exit="ok";
-                        break;
-                    }
-                    case "exit": {
-                        exit = "exit";
-                        output.close();
-                        input.close();
-                        break;
-                    }
-                    default : break;
                 }
+
+                out.close();///
+                in.close();///
+
             /*    switch (who) {//////////////////////////////////////////
                     case "admin":
                         exit = menuAdmin();
@@ -153,23 +162,38 @@ public class Action implements Runnable {
             String user;
 
             user = in.readLine();
-            System.out.println( "я получил: " + user );
-            if(!user.equals( "back" ) ) {
-                JSONObject userJson = new JSONObject( user );
-                int id = IdGenerator.getInstance( "user" ).getNextId();
+            if (user != null) {
+                System.out.println("я получил: " + user);
+                if (!user.equals("back")) {
+                    JSONObject userJson = new JSONObject(user);
+                    int id = IdGenerator.getInstance("user").getNextId();
 
-                String firstName = userJson.getString( "firstname" );
-                String lastName = userJson.getString( "lastname" );
-                String email = userJson.getString( "email" );
-                String userName = userJson.getString( "username" );
-                String password = userJson.getString( "password" );
+                    String firstName = userJson.getString("firstname");
+                    String lastName = userJson.getString("lastname");
+                    String email = userJson.getString("email");
+                    String userName = userJson.getString("username");
+                    String password = userJson.getString("password");
 
-                DataBaseHandler handler = new DataBaseHandler();
-                String sign = handler.signUpUser(firstName, lastName, email, userName, password );
-                out.write( sign + '\n' );
-                out.flush();
-                System.out.println( "я отправил: " + sign );
-            }else {return;}
+                    DataBaseHandler handler = new DataBaseHandler();
+
+                    String signIn = handler.checkUser(userName);
+                    if(user==signIn){
+                        out.write(signIn + '\n');
+                        out.flush();
+                        System.out.println("я отправил: " + signIn);
+                    }
+                    else {
+                      String sign = handler.signUpUser(firstName, lastName, email, userName, password);
+                      out.write(sign + '\n');
+                      out.flush();
+                      System.out.println("я отправил: " + sign);
+                    }
+
+                } else {
+                    return;
+                }
+            }
+
         }
         catch (IOException | JSONException e) {
             e.printStackTrace();

@@ -9,10 +9,12 @@ import java.net.Socket;
 public class MultiThreadedServer implements Runnable{
     protected int serverPort = 9000;
     protected ServerSocket serverSocket = null;
+ //   protected ExecutorService pool=null;//////////
     protected boolean isStopped = false;
 
     public MultiThreadedServer(int port){
         this.serverPort = port;
+  //      pool= Executors.newFixedThreadPool(5);///////////
     }
 
     @Override
@@ -22,6 +24,8 @@ public class MultiThreadedServer implements Runnable{
             Socket clientSocket = null;
             try {
                 clientSocket = this.serverSocket.accept();
+          //      Action runnable = new Action(clientSocket); //////////
+         //       pool.execute(runnable);
             } catch (IOException e) {
                 if(isStopped()) {
                     System.out.println("Server Stopped.") ;
@@ -29,6 +33,7 @@ public class MultiThreadedServer implements Runnable{
                 }
                 throw new RuntimeException("Error accepting client connection", e);
             }
+
             new Thread(
                     new Action(clientSocket)
             ).start();
@@ -42,7 +47,7 @@ public class MultiThreadedServer implements Runnable{
     }
 
     public synchronized void stop(){
-        this.isStopped = true;
+        this.isStopped = true;  //true
         try {
             this.serverSocket.close();
         } catch (IOException e) {

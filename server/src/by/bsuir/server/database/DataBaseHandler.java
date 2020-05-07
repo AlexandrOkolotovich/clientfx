@@ -25,14 +25,16 @@ public class DataBaseHandler extends Configs {
                 Const.USER_EMAIL + "," + Const.USER_USERNAME + "," + Const.USER_PASSWORD + ")" +
                 "VALUES(?,?,?,?,?)";
 
+
+
         try {
-            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-            prSt.setString(1, firstname);
-            prSt.setString(2,lastname);
-            prSt.setString(3, email);
-            prSt.setString(4, username);
-            prSt.setString(5, password);
-            prSt.executeUpdate();
+                PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+                prSt.setString(1, firstname);
+                prSt.setString(2, lastname);
+                prSt.setString(3, email);
+                prSt.setString(4, username);
+                prSt.setString(5, password);
+                prSt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -52,25 +54,47 @@ public class DataBaseHandler extends Configs {
         return userJson.toString();
     }
 
-  /*  public ResultSet getUser(User user){
+    public String checkUser(String login){
+        JSONObject userJson = new JSONObject();
+        User user = new User();
+        String result =null;
         ResultSet resSet = null;
-        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_USERNAME + "=? AND " +
-                Const.USER_PASSWORD + "=?";
+        String select = "SELECT * FROM " + Const.USER_TABLE + " WHERE " + Const.USER_USERNAME + "=?";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(select);
-            prSt.setString(1,user.getUserName());
-            prSt.setString(2,user.getPassword());
+            prSt.setString(1, login);
+            ResultSet rs = prSt.executeQuery();
 
-            resSet = prSt.executeQuery();
+            if (rs.next() == false) {
+                result = "nobody";
+            } else
+            { do {
+                user.setID(rs.getInt(1));
+                user.setFirstName(rs.getString(2));
+                user.setLastName(rs.getString(3));
+                user.setEmail(rs.getString(4));
+                user.setUserName(rs.getString(5));
+                user.setPassword(rs.getString(6));
+
+                userJson.put("id", user.getID());
+                userJson.put("firstname", user.getFirstName());
+                userJson.put("lastname", user.getLastName());
+                userJson.put("email", user.getEmail());
+                userJson.put("username", user.getUserName());
+                userJson.put("password", user.getPassword());
+            } while (rs.next());
+                result = userJson.toString();
+            }
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return resSet;
+        return result;
     }
-*/
+
     public String signInUser(String login, String password) throws SQLException {
         JSONObject userJson = new JSONObject();
         User user = new User();
