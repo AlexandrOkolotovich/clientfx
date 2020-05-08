@@ -70,21 +70,23 @@ public class DataBaseHandler extends Configs {
                 result = "nobody";
             } else
             { do {
-                user.setID(rs.getInt(1));
-                user.setFirstName(rs.getString(2));
-                user.setLastName(rs.getString(3));
-                user.setEmail(rs.getString(4));
+             //   user.setID(rs.getInt(1));
+             //   user.setFirstName(rs.getString(2));
+             //   user.setLastName(rs.getString(3));
+             //   user.setEmail(rs.getString(4));
                 user.setUserName(rs.getString(5));
-                user.setPassword(rs.getString(6));
+                result = user.getUserName();
+             //   user.setPassword(rs.getString(6));
 
-                userJson.put("id", user.getID());
-                userJson.put("firstname", user.getFirstName());
-                userJson.put("lastname", user.getLastName());
-                userJson.put("email", user.getEmail());
-                userJson.put("username", user.getUserName());
-                userJson.put("password", user.getPassword());
+          //      userJson.put("id", user.getID());
+          //      userJson.put("firstname", user.getFirstName());
+          //      userJson.put("lastname", user.getLastName());
+          //      userJson.put("email", user.getEmail());
+           //     userJson.put("username", user.getUserName());
+         //       userJson.put("password", user.getPassword());
             } while (rs.next());
-                result = userJson.toString();
+              //  result = userJson.toString();
+                result = user.getUserName();
             }
 
         } catch (SQLException e) {

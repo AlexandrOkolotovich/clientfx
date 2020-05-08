@@ -1,6 +1,7 @@
 package by.bsuir.client.sample.information;
 
 import by.bsuir.client.sample.connectoin.Client;
+import javafx.scene.control.Alert;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -25,24 +26,35 @@ public final class User {
 
 
 
-    private User() {
-        try{
+    public User() {
+        try {
             // client.Client.getInstance().send("setUser");
-          //  String str = client.Client.getInstance().get();
+         //   String str = Client.getInstance().get();
+
             String str = Client.getInstance().get();
-            JSONObject json = new JSONObject(str);
-            id = json.getInt("id");
-            firstName = json.getString("firstname");
-            lastName = json.getString("lastname");
-            email =json.getString("email");
-            userName = json.getString("username");
-            password = json.getString("password");
 
+                JSONObject json = new JSONObject(str);
+                if(!str.equals("exist")) {
+                    id = json.getInt("id");
+                    firstName = json.getString("firstname");
+                    lastName = json.getString("lastname");
+                    email = json.getString("email");
+                    userName = json.getString("username");
+                    password = json.getString("password");
+                }
+                 else {
+                     Alert alert = new Alert(Alert.AlertType.WARNING);
+                     alert.setTitle("Ошибка");
+                     alert.setHeaderText("Такой логин уже существует");
+                     alert.showAndWait();
+        }
 
-        } catch (IOException| JSONException e) {
+        } catch(JSONException | IOException e){
             System.err.println(e);
         }
+
     }
+
 
     public int getID() {
         return id;
@@ -91,5 +103,6 @@ public final class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
 

@@ -64,8 +64,6 @@ public class Action implements Runnable {
                     }
                 }
 
-                out.close();///
-                in.close();///
 
             /*    switch (who) {//////////////////////////////////////////
                     case "admin":
@@ -83,14 +81,15 @@ public class Action implements Runnable {
                 }*/
             }
 
-
+            out.close();///
+            in.close();///
         }
-     /*   catch ( ClassNotFoundException e) {
+       /* catch ( ClassNotFoundException e) {
             e.printStackTrace();
         }
         catch (SQLException e) {
             e.printStackTrace();
-        }*////////////////////////////////////////////////////////
+        }*/////////////////////////////////////////////////////////
         catch (IOException e) {
             e.printStackTrace();
         }
@@ -177,10 +176,10 @@ public class Action implements Runnable {
                     DataBaseHandler handler = new DataBaseHandler();
 
                     String signIn = handler.checkUser(userName);
-                    if(user==signIn){
-                        out.write(signIn + '\n');
+                    if(signIn.equals(userName)){
+                        out.write("exist" + '\n');
                         out.flush();
-                        System.out.println("я отправил: " + signIn);
+                        System.out.println("я отправил: " + "exist");
                     }
                     else {
                       String sign = handler.signUpUser(firstName, lastName, email, userName, password);

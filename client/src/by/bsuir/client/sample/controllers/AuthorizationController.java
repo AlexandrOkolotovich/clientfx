@@ -93,7 +93,7 @@ public class AuthorizationController {
                     authSigInButton.getScene().getWindow().hide();
 
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/menuAdmin.fxml"));
+                    loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/menuAdmin.fxml"));
 
                     loader.load();
 
@@ -114,7 +114,7 @@ public class AuthorizationController {
                     authSigInButton.getScene().getWindow().hide();
 
                     FXMLLoader loader = new FXMLLoader();
-                    loader.setLocation(Controller.class.getResource("/by/bsuir/client/sample/view/menuUser.fxml"));
+                    loader.setLocation(getClass().getResource("/by/bsuir/client/sample/view/menuUser.fxml"));
 
                     loader.load();
 
