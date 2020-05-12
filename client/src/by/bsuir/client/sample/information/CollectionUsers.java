@@ -3,6 +3,7 @@ package by.bsuir.client.sample.information;
 import by.bsuir.client.sample.connectoin.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,13 +38,13 @@ public final class CollectionUsers{
             int count = newArray.length();
             for(int i = 0; i<count; i++) {
                 JSONObject object = newArray.getJSONObject( i );
-                int ids = object.getInt( "id");
-                String id = String.valueOf( ids );
-                String firstName = object.getString( "firstame" );
-                String lastName = object.getString( "lastname" );
+                Integer id = object.getInt("id");
+                String firstName = object.getString( "firstName" );
+                String lastName = object.getString( "lastName" );
                 String email = object.getString( "email" );
-                String userName = object.getString( "username" );
-                UserInf user = new UserInf(id, firstName, lastName, email, userName );
+                String userName = object.getString( "userName" );
+                String password=object.getString("password");
+                UserInf user = new UserInf(id, firstName, lastName, email, userName, password );
                 users.add( user );
             }
         } catch (IOException | JSONException e) {

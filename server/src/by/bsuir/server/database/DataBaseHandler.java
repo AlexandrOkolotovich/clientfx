@@ -19,8 +19,8 @@ public class DataBaseHandler extends Configs {
         return dbConnection;
     }
 
-    public String signUpUser(String firstname, String lastname, String email,
-                             String username, String password){
+    public String signUpUser(String firstName, String lastName, String email,
+                             String userName, String password){
         String insert = "INSERT INTO " + Const.USER_TABLE + "(" + Const.USER_FIRSTNAME + "," + Const.USER_LASTNAME + "," +
                 Const.USER_EMAIL + "," + Const.USER_USERNAME + "," + Const.USER_PASSWORD + ")" +
                 "VALUES(?,?,?,?,?)";
@@ -29,10 +29,10 @@ public class DataBaseHandler extends Configs {
 
         try {
                 PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-                prSt.setString(1, firstname);
-                prSt.setString(2, lastname);
+                prSt.setString(1, firstName);
+                prSt.setString(2, lastName);
                 prSt.setString(3, email);
-                prSt.setString(4, username);
+                prSt.setString(4, userName);
                 prSt.setString(5, password);
                 prSt.executeUpdate();
         } catch (SQLException e) {
@@ -43,10 +43,10 @@ public class DataBaseHandler extends Configs {
 
         JSONObject userJson = new JSONObject();
         try {
-            userJson.put("firstname", firstname);
-            userJson.put("lastname", lastname);
+            userJson.put("firstName", firstName);
+            userJson.put("lastName", lastName);
             userJson.put("email", email);
-            userJson.put("username", username);
+            userJson.put("userName", userName);
             userJson.put("password", password);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -70,28 +70,17 @@ public class DataBaseHandler extends Configs {
                 result = "nobody";
             } else
             { do {
-             //   user.setID(rs.getInt(1));
-             //   user.setFirstName(rs.getString(2));
-             //   user.setLastName(rs.getString(3));
-             //   user.setEmail(rs.getString(4));
+
                 user.setUserName(rs.getString(5));
                 result = user.getUserName();
-             //   user.setPassword(rs.getString(6));
 
-          //      userJson.put("id", user.getID());
-          //      userJson.put("firstname", user.getFirstName());
-          //      userJson.put("lastname", user.getLastName());
-          //      userJson.put("email", user.getEmail());
-           //     userJson.put("username", user.getUserName());
-         //       userJson.put("password", user.getPassword());
+
             } while (rs.next());
-              //  result = userJson.toString();
+
                 result = user.getUserName();
             }
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return result;
@@ -121,10 +110,10 @@ public class DataBaseHandler extends Configs {
                 user.setPassword(rs.getString(6));
 
                 userJson.put("id", user.getID());
-                userJson.put("firstname", user.getFirstName());
-                userJson.put("lastname", user.getLastName());
+                userJson.put("firstName", user.getFirstName());
+                userJson.put("lastName", user.getLastName());
                 userJson.put("email", user.getEmail());
-                userJson.put("username", user.getUserName());
+                userJson.put("userName", user.getUserName());
                 userJson.put("password", user.getPassword());
             } while (rs.next());
                 result = userJson.toString();
@@ -150,17 +139,19 @@ public class DataBaseHandler extends Configs {
             while (rs.next()){
 
                 user = new User();
-                user.setFirstName(rs.getString(1));
-                user.setLastName(rs.getString(2));
-                user.setEmail(rs.getString(3));
-                user.setUserName(rs.getString(4));
-                user.setPassword(rs.getString(5));
+                user.setID(rs.getInt(1));
+                user.setFirstName(rs.getString(2));
+                user.setLastName(rs.getString(3));
+                user.setEmail(rs.getString(4));
+                user.setUserName(rs.getString(5));
+                user.setPassword(rs.getString(6));
 
                 userJson = new JSONObject();
-                userJson.put("firstname", user.getFirstName());
-                userJson.put("lastname", user.getLastName());
+                userJson.put("id", user.getID());
+                userJson.put("firstName", user.getFirstName());
+                userJson.put("lastName", user.getLastName());
                 userJson.put("email", user.getEmail());
-                userJson.put("username", user.getUserName());
+                userJson.put("userName", user.getUserName());
                 userJson.put("password", user.getPassword());
 
                 users.put( userJson );
@@ -173,12 +164,20 @@ public class DataBaseHandler extends Configs {
         return users.toString();
     }
 
-    public void deleteUser(String userId) throws SQLException, ClassNotFoundException {
-        String deletion = "DELETE FROM app.user WHERE "+ Const.USER_ID +"="+ userId;
+    public void deleteUser(Integer userId) throws SQLException, ClassNotFoundException {
+     /*   String deletion = "DELETE * FROM " + Const.USER_TABLE+ " WHERE "+ Const.USER_ID +" = "+ userId;
         PreparedStatement prSt = null;
         prSt = getDbConnection().prepareStatement(deletion);
+        prSt.executeUpdate();*/
+        String deletion = "DELETE FROM " + Const.USER_TABLE+ " WHERE "+ Const.USER_ID +" = ?";
+        PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
+        prSt.setInt(1,userId);
         prSt.executeUpdate();
+
+
     }
+
+
 
     //потом посмотрю зачем надо
     private String getNumOfUsers() {
@@ -220,7 +219,7 @@ public class DataBaseHandler extends Configs {
                 admin.setPassword(rs.getString(3));
 
                 userJson.put("id", admin.getID());
-                userJson.put("username", admin.getUserName());
+                userJson.put("userName", admin.getUserName());
                 userJson.put("password", admin.getPassword());
             } while (rs.next());
                 result = userJson.toString();
@@ -233,5 +232,87 @@ public class DataBaseHandler extends Configs {
 
         return result;
     }
+
+    public String projectInput(String director, String operator, String presenter,
+                             String projectName, int assesment, String format, int studioNumber){
+        String insert = "INSERT INTO " + Const.PROJECT_TABLE + "(" + Const.PROJECT_DIRECTOR + "," + Const.PROJECT_OPERATOR + "," +
+                Const.PROJECT_PRESENTER + "," + Const.PROJECT_NAME + "," + Const.PROJECT_ASSESMENT + "," + Const.PROJECT_FORMAT
+                + "," + Const.PROJECT_STUDIONUMBER+ ")" +
+                "VALUES(?,?,?,?,?,?,?)";
+
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setString(1, director);
+            prSt.setString(2, operator);
+            prSt.setString(3, presenter);
+            prSt.setString(4, projectName);
+            prSt.setInt(5, assesment);
+            prSt.setString(6, format);
+            prSt.setInt(7, studioNumber);
+
+            prSt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        JSONObject userJson = new JSONObject();
+        try {
+            userJson.put("director", director);
+            userJson.put("operator", operator);
+            userJson.put("presenter", presenter);
+            userJson.put("projectName", projectName);
+            userJson.put("assesment", assesment);
+            userJson.put("format", format);
+            userJson.put("studioNumber", studioNumber);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return userJson.toString();
+    }
+
+    public String getProjects() {
+        Project project;
+        JSONObject projectJson;
+        JSONArray projects = new JSONArray(  );
+        try {
+
+            String select = "SELECT * FROM "+Const.PROJECT_TABLE;
+            PreparedStatement prep1 = getDbConnection().prepareStatement( select );
+            ResultSet rs = prep1.executeQuery();
+            while (rs.next()){
+
+                project = new Project();
+                project.setIdprojects(rs.getInt(1));
+                project.setDirector(rs.getString(2));
+                project.setOperator(rs.getString(3));
+                project.setPresenter(rs.getString(4));
+                project.setProjectname(rs.getString(5));
+                project.setAssesment(rs.getInt(6));
+                project.setFormat(rs.getString(7));
+                project.setStudionumber(rs.getInt(8));
+
+
+                projectJson = new JSONObject();
+                projectJson.put("id", project.getIdprojects());
+                projectJson.put("director", project.getDirector());
+                projectJson.put("operator", project.getOperator());
+                projectJson.put("presenter", project.getPresenter());
+                projectJson.put("projectName", project.getProjectname());
+                projectJson.put("assesment", project.getAssesment());
+                projectJson.put("format", project.getFormat());
+                projectJson.put("studioNumber", project.getStudionumber());
+
+                projects.put( projectJson );
+            }
+
+        } catch (SQLException | ClassNotFoundException | JSONException e) {
+            e.printStackTrace();
+        }
+
+        return projects.toString();
+    }
+
+
 }
 

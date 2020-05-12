@@ -46,6 +46,16 @@ public final class Client {
         }
     }
 
+    public void send(Integer num) {
+        try {
+            out.write(num); // отправляем сообщение на сервер
+            out.flush();
+            System.out.println("я отправил: "+ num);
+        } catch (IOException e) {
+            System.err.println(e);
+        }
+    }
+
     public String get() throws IOException {
         String word = in.readLine();
         System.out.println("я принял: "+word);

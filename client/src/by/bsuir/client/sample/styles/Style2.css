@@ -10,6 +10,11 @@
 {
 -fx-background-color : #67aec9 ;
 }
+.button:focused
+{
+-fx-background-color: #67aec9;
+-fx-border-insets:0,1,0
+}
 
 .table-view .column-header,
 .table-view .column-header-background .filler {

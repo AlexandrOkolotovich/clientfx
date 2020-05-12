@@ -25,21 +25,18 @@ public final class User {
     }
 
 
-
     public User() {
         try {
-            // client.Client.getInstance().send("setUser");
-         //   String str = Client.getInstance().get();
 
             String str = Client.getInstance().get();
 
                 JSONObject json = new JSONObject(str);
                 if(!str.equals("exist")) {
                     id = json.getInt("id");
-                    firstName = json.getString("firstname");
-                    lastName = json.getString("lastname");
+                    firstName = json.getString("firstName");
+                    lastName = json.getString("lastName");
                     email = json.getString("email");
-                    userName = json.getString("username");
+                    userName = json.getString("userName");
                     password = json.getString("password");
                 }
                  else {

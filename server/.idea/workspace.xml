@@ -27,7 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
     <property name="findjar.last.used.dir" value="$PROJECT_DIR$" />
-    <property name="last_opened_file_path" value="D:/Учёба/4 семестр/Курсовой проект/Исходный код/client" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../client" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15429688" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -87,42 +87,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="88" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1588367071682" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1588952565273">
+    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser" timestamp="1589285024760">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1588952565273" />
-    <state width="1493" height="191" key="GridCell.Tab.0.bottom" timestamp="1588888399867">
+    <state x="574" y="97" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1589285024760" />
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1589281286909">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.0.center" timestamp="1588888399867">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1589281286909" />
+    <state width="1493" height="191" key="GridCell.Tab.0.bottom" timestamp="1589310554816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.0.left" timestamp="1588888399867">
+    <state width="1493" height="191" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589310554816" />
+    <state width="1493" height="191" key="GridCell.Tab.0.center" timestamp="1589310554816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.0.right" timestamp="1588888399867">
+    <state width="1493" height="191" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1589310554816" />
+    <state width="1493" height="191" key="GridCell.Tab.0.left" timestamp="1589310554816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.1.bottom" timestamp="1588888399868">
+    <state width="1493" height="191" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1589310554816" />
+    <state width="1493" height="191" key="GridCell.Tab.0.right" timestamp="1589310554816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1588888399868" />
-    <state width="1493" height="191" key="GridCell.Tab.1.center" timestamp="1588888399867">
+    <state width="1493" height="191" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1589310554816" />
+    <state width="1493" height="191" key="GridCell.Tab.1.bottom" timestamp="1589310521025">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.1.left" timestamp="1588888399867">
+    <state width="1493" height="191" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1589310521025" />
+    <state width="1493" height="191" key="GridCell.Tab.1.center" timestamp="1589310521023">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
-    <state width="1493" height="191" key="GridCell.Tab.1.right" timestamp="1588888399867">
+    <state width="1493" height="191" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1589310521023" />
+    <state width="1493" height="191" key="GridCell.Tab.1.left" timestamp="1589310521023">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="191" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1588888399867" />
+    <state width="1493" height="191" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1589310521023" />
+    <state width="1493" height="191" key="GridCell.Tab.1.right" timestamp="1589310521024">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="191" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1589310521024" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1588369339009">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -131,6 +135,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="209" y="34" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1588366263491" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1589285356742">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1589285356742" />
     <state x="491" y="325" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1588347717131">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -141,18 +149,108 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
-          <line>181</line>
+          <line>182</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
-          <line>178</line>
+          <line>180</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
-          <line>177</line>
+          <line>179</line>
           <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>171</line>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>172</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>173</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="42" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>128</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>130</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/database/DataBaseHandler.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>132</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>137</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/by/bsuir/server/actions/Action.java</url>
+          <line>103</line>
+          <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

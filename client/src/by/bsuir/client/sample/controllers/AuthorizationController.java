@@ -1,11 +1,6 @@
 package by.bsuir.client.sample.controllers;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import by.bsuir.client.sample.connectoin.Client;
-import by.bsuir.client.sample.information.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,6 +12,10 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class AuthorizationController {
 
@@ -66,13 +65,14 @@ public class AuthorizationController {
                 Client.getInstance().send("authorization");
 
                 JSONObject userJson = new JSONObject();
-                userJson.put("username", login_field.getText().trim());
+                userJson.put("userName", login_field.getText().trim());
                 userJson.put("password", password_field.getText().trim());
 
                 Client.getInstance().send(userJson.toString());
 
-                String status = Client.getInstance(). get();
+                String status = Client.getInstance().get();
                 if (!status.equals("nobody")) {
+
                     openMenu(status);
                 } else {
                     System.out.println("Повторите ввод");
@@ -99,10 +99,11 @@ public class AuthorizationController {
 
                     Parent root = loader.getRoot();
                     Stage stage = new Stage();
-                    stage.setTitle("Меню администратора");
-                    stage.setResizable(false);
                     stage.setScene(new Scene(root));
+                    stage.setResizable(false);
                     stage.show();
+                    stage.setTitle("Меню администратора");
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

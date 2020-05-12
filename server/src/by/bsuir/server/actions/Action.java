@@ -62,35 +62,27 @@ public class Action implements Runnable {
                         default:
                             break;
                     }
+
+                    switch (who) {
+                        case "admin":
+                            exit = menuAdmin();
+                            break;
+
+                        case "user":
+                            exit = menuUser();
+                            break;
+
+                        default : break;
+                    }
                 }
 
 
-            /*    switch (who) {//////////////////////////////////////////
-                    case "admin":
-                        exit = menuAdmin();
-                        break;
-
-                    case "user":
-                        exit = menuUser();
-                        break;
-
-                    case "nobody":
-                        break;
-
-                  //  default : break;
-                }*/
             }
 
             out.close();///
             in.close();///
         }
-       /* catch ( ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }*/////////////////////////////////////////////////////////
-        catch (IOException e) {
+        catch (IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
@@ -98,14 +90,18 @@ public class Action implements Runnable {
     private String menuAdmin() throws SQLException, ClassNotFoundException {
         DataBaseHandler handler = new DataBaseHandler();
         String users = handler.getUsers();
+        String projects = handler.getProjects();
         String menu = "work";
         try {
             out.write( users + '\n' );
             out.flush();
             System.out.println( "я отправил: " + users );
 
+            out.write(projects+'\n');
+            out.flush();
+            System.out.println("я оправил проекты: " + projects);
 
-            while (!menu.equals( "exit" )) {
+            while (!menu.equals( "back" )) {
                 menu = in.readLine();
                 System.out.println( "я получил: " + menu );
                 switch (menu) {
@@ -123,26 +119,32 @@ public class Action implements Runnable {
                         out.flush();
                         break;
                     }
-                    case "getCompanies": {
-                        String userId = in.readLine();
-                        System.out.println( "я получил: " + userId );
-                 //       String companies = handler.getCompanies( userId );//
-                //        out.write( companies + '\n' );//
-                        out.flush();
-                        break;
-                    }
+
                     case "deleteUser":{
-                        String userId = in.readLine();
+                        int userId = in.read();
                         System.out.println( "я получил: " + userId );
                         handler.deleteUser(userId);
+                        break;
+                    }
+                    case "searchLogin":{
+                        String userLogin = in.readLine();
+                        String search = handler.checkUser(userLogin);
+                        out.write( search + '\n' );
+                        out.flush();
+                        System.out.println("я отправил: " + search);
+                        break;
+                    }
+                    case "getProject":{
+                        getProject();
                         break;
                     }
                     case "statistics":{
                //         handler.saveStatistics();//
                         break;
                     }
-                    case "exit": {
-                        menu = "exit";
+
+                    case "back": {
+                        menu = "back";
                         break;
                     }
                     default:break;
@@ -167,10 +169,10 @@ public class Action implements Runnable {
                     JSONObject userJson = new JSONObject(user);
                     int id = IdGenerator.getInstance("user").getNextId();
 
-                    String firstName = userJson.getString("firstname");
-                    String lastName = userJson.getString("lastname");
+                    String firstName = userJson.getString("firstName");
+                    String lastName = userJson.getString("lastName");
                     String email = userJson.getString("email");
-                    String userName = userJson.getString("username");
+                    String userName = userJson.getString("userName");
                     String password = userJson.getString("password");
 
                     DataBaseHandler handler = new DataBaseHandler();
@@ -187,12 +189,8 @@ public class Action implements Runnable {
                       out.flush();
                       System.out.println("я отправил: " + sign);
                     }
-
-                } else {
-                    return;
                 }
             }
-
         }
         catch (IOException | JSONException e) {
             e.printStackTrace();
@@ -205,7 +203,7 @@ public class Action implements Runnable {
             String user = in.readLine();
             JSONObject userJson = new JSONObject( user );
 
-            String userName = userJson.getString( "username" );
+            String userName = userJson.getString( "userName" );
             String password = userJson.getString( "password" );
 
             DataBaseHandler handler = new DataBaseHandler();
@@ -333,5 +331,33 @@ public class Action implements Runnable {
             e.printStackTrace();
         }
         return menu2;
+    }
+
+    protected void getProject(){
+        try {
+            String project;
+            project = in.readLine();
+            if(!project.equals( "back" )) {
+                JSONObject projectJson = new JSONObject( project );
+             //   int id = IdGenerator.getInstance( "user" ).getNextId();
+
+                String director = projectJson.getString( "director" );
+                String operator = projectJson.getString( "operator" );
+                String presenter = projectJson.getString( "presenter" );
+                String projectName = projectJson.getString( "projectName" );
+                int assesment = projectJson.getInt( "assesment" );
+                String format = projectJson.getString( "format" );
+                int studioNumber = projectJson.getInt( "studioNumber" );
+
+                DataBaseHandler handler = new DataBaseHandler();
+                String input = handler.projectInput( director, operator, presenter, projectName, assesment, format, studioNumber );
+                out.write( input + '\n' );
+                out.flush();
+                System.out.println( "я отправил: " + input );
+            }else {return;}
+        }
+        catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,27 +1,30 @@
 package by.bsuir.client.sample.information;
 
 public class UserInf {
-    private String id;
+  //  private String id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String userName;
+    private String password;
 
 
 
-    public UserInf(String id, String firstName, String lastName,  String email, String userName) {
+    public UserInf(Integer id, String firstName, String lastName,  String email, String userName, String password) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.userName = userName;
+        this.password = password;
     }
 
-    public String getID() {
+    public int getId() {
         return id;
     }
 
-    public void setID(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -57,11 +60,11 @@ public class UserInf {
         this.userName = userName;
     }
 
-  /*  public String getPassword() {
+    public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
-    }*/
+    }
 }

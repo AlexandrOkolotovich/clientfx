@@ -60,14 +60,14 @@ public class SignUpController {
                     || checkName(signUpName.getText()) == false) {
                 key = false;
             } else {
-                userJson.put("firstname", signUpName.getText().trim());
+                userJson.put("firstName", signUpName.getText().trim());
             }
             if (signUpLastName.getText().isEmpty() || signUpLastName.getText() == null
                     || signUpLastName.getText().length() < 4 || signUpLastName.getText().length() > 12
                     || checkName(signUpLastName.getText()) == false) {
                 key = false;
             } else {
-                userJson.put("lastname", signUpLastName.getText().trim());
+                userJson.put("lastName", signUpLastName.getText().trim());
             }
             if (signUpEmail.getText().isEmpty() || signUpEmail.getText() == null
                     || signUpEmail.getText().length() < 4 || signUpEmail.getText().length() > 32
@@ -81,7 +81,7 @@ public class SignUpController {
                     || checkUserName(login_field.getText()) == false) {
                 key = false;
             } else {
-                userJson.put("username", login_field.getText().trim());
+                userJson.put("userName", login_field.getText().trim());
             }
             if (password_field.getText().isEmpty() || password_field.getText() == null
                     || password_field.getText().length() < 4 || password_field.getText().length() > 12) {
