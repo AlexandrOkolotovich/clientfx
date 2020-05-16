@@ -117,7 +117,7 @@ public class SignUpController {
             } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ошибка");
-                alert.setHeaderText("Заполните все поля!");
+                alert.setHeaderText("Заполните поля корректно!");
                 alert.showAndWait();
             }
 

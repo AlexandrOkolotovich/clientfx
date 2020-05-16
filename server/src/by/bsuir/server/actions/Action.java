@@ -79,8 +79,8 @@ public class Action implements Runnable {
 
             }
 
-            out.close();///
-            in.close();///
+            out.close();
+            in.close();
         }
         catch (IOException | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -105,25 +105,16 @@ public class Action implements Runnable {
                 menu = in.readLine();
                 System.out.println( "я получил: " + menu );
                 switch (menu) {
-                    case "addUSD": {
-                        String newRate = in.readLine();
-                        System.out.println( "я получил: " + newRate);
-                       // handler.addUSD(newRate);//
-                        break;
-                    }
-                    case "getReports": {
-                        String userId = in.readLine();
-                        System.out.println( "я получил: " + userId );
-                   //     String reports = handler.getReportsUser( userId );//
-                  //      out.write( reports + '\n' );//
-                        out.flush();
-                        break;
-                    }
-
                     case "deleteUser":{
                         int userId = in.read();
                         System.out.println( "я получил: " + userId );
                         handler.deleteUser(userId);
+                        break;
+                    }
+                    case "deleteProject":{
+                        int projectId = in.read();
+                        System.out.println( "я получил: " + projectId );
+                        handler.deleteProject(projectId);
                         break;
                     }
                     case "searchLogin":{
@@ -138,8 +129,12 @@ public class Action implements Runnable {
                         getProject();
                         break;
                     }
-                    case "statistics":{
-               //         handler.saveStatistics();//
+                    case "getSinglSolution":{
+                        getSinglSolution();
+                        break;
+                    }
+                    case "getNum":{
+                        getAns();
                         break;
                     }
 
@@ -152,7 +147,7 @@ public class Action implements Runnable {
             }
         }
         catch (IOException | JSONException e) {
-            e.printStackTrace();
+           e.printStackTrace();
         }
         return menu;
 
@@ -213,16 +208,10 @@ public class Action implements Runnable {
                 output.write( "admin\n".getBytes() );
                 out.flush();
                 System.out.println( "я отправил: " + "admin" );
-           /*     out.write( sign + '\n' );
-                out.flush();
-                System.out.println( "я отправил: " + sign );*//////////////////////////////
 
             }
 
-          /*  if( userName.equals( "myadmin" ) && password.equals( "myadmin" ) ) {
-                output.write( "admin\n".getBytes() );
-                who = "admin";
-            }*/
+
             else {
 
                 //DataBaseHandler handler = new DataBaseHandler();
@@ -241,9 +230,6 @@ public class Action implements Runnable {
                     output.write( "user\n".getBytes() );
                     out.flush();
                     System.out.println( "я отправил: " + "user" );
-         /*           out.write( sign + '\n' );
-                    out.flush();
-                    System.out.println( "я отправил: " + sign );*//////////////////////////
 
                 }
 
@@ -259,68 +245,34 @@ public class Action implements Runnable {
 
     public String menuUser() throws IOException {
         DataBaseHandler handler = new DataBaseHandler();
-   //     String idUser = in.readLine();
-   //    String companies = handler.getCompanies(idUser); //
+
+        String projects = handler.getProjects();
         String menu2 = "work";
         try {
-     //       out.write( companies + '\n' );//
-
+            out.write(projects+'\n');
             out.flush();
-    //        System.out.println( "я отправил: " + companies );//
+            System.out.println("я оправил проекты: " + projects);
 
 
-            while (!menu2.equals( "exit" )) {
+            while (!menu2.equals( "back" )) {
                 menu2 = in.readLine();
                 System.out.println( "я получил: " + menu2 );
                 switch (menu2) {
-                    case "calculate": {
-                        String Id = in.readLine();
-                        int IDUser = Integer.parseInt( Id );
-                        String type = in.readLine();
-                        System.out.println( "я получил: " + type );
 
-                        String reportValue = in.readLine();
-                        System.out.println( "я получил: " + reportValue );
-                        JSONObject res = new JSONObject( reportValue );
-    /*                    Report report = new Report( res.getString( "date" ), type, res.getDouble( "x1" ), res.getDouble( "x2" ), res.getDouble( "x3" ),
-                                res.getDouble( "x4" ), res.getDouble( "x5" ), res.getDouble( "x6" ),
-                                res.getDouble( "x7" ), res.getDouble( "x8" ), res.getDouble( "x9" ), res.getInt( "IDCompany" ) );
-
-                        out.write( report.getResult() + '\n' );
-                        out.flush();
-                        System.out.println( "я отправил:" + report.getResult() );
-                        handler.addReport( report ,IDUser );*////////
+                    case "getProject":{
+                        getProject();
                         break;
                     }
-                    case "getReports": {
-                        String companyId = in.readLine();
-                        System.out.println( "я получил: " + companyId );
-       //                 String reports = handler.getReportsCompany( companyId );//
-         //               out.write( reports + '\n' );//
-                        out.flush();
+                    case "getSinglSolution":{
+                        getSinglSolution();
                         break;
                     }
-                    case "addCompany": {
-                        String Id = in.readLine();
-                        int IDUser = Integer.parseInt( Id );
-                        // String reportValue = in.readLine();
-                        String company = in.readLine();
-                        System.out.println( "я получил" + company );
-     //                   handler.addCompany( company , IDUser);//
+                    case "getNum":{
+                        getAns();
                         break;
                     }
-                    case "txt":{
-       //                 Report report = handler.getLastReport();//
-       //                 report.saveTXT();//
-                        break;
-                    }
-                    case "pdf":{
-      //                  Report report = handler.getLastReport();//
-       //                 report.savePDF();//
-                        break;
-                    }
-                    case "exit": {
-                        menu2 = "exit";
+                    case "back": {
+                        menu2 = "back";
                         break;
                     }
                     default:break;
@@ -339,7 +291,7 @@ public class Action implements Runnable {
             project = in.readLine();
             if(!project.equals( "back" )) {
                 JSONObject projectJson = new JSONObject( project );
-             //   int id = IdGenerator.getInstance( "user" ).getNextId();
+                int id = IdGenerator.getInstance( "project" ).getNextId();
 
                 String director = projectJson.getString( "director" );
                 String operator = projectJson.getString( "operator" );
@@ -350,14 +302,200 @@ public class Action implements Runnable {
                 int studioNumber = projectJson.getInt( "studioNumber" );
 
                 DataBaseHandler handler = new DataBaseHandler();
-                String input = handler.projectInput( director, operator, presenter, projectName, assesment, format, studioNumber );
+                String input = handler.projectInput( id, director, operator, presenter, projectName, assesment, format, studioNumber );
                 out.write( input + '\n' );
                 out.flush();
                 System.out.println( "я отправил: " + input );
-            }else {return;}
+                out.write( input + '\n' );
+                out.flush();
+                System.out.println( "я отправил новый проект: " + input );
+            }
         }
         catch (IOException | JSONException e) {
             e.printStackTrace();
         }
     }
+
+    protected void getSinglSolution(){
+        try {
+            String task;
+            task = in.readLine();
+            if(!task.equals( "back" )) {
+                JSONObject taskJson = new JSONObject( task );
+
+                int el11 = taskJson.getInt( "el11" );
+                int el12 = taskJson.getInt( "el12" );
+                int el13 = taskJson.getInt( "el13" );
+                int el14 = taskJson.getInt( "el14" );
+                int el15 = taskJson.getInt( "el15" );
+                int el16 = taskJson.getInt( "el16" );
+                int el17 = taskJson.getInt( "el17" );
+                int el18 = taskJson.getInt( "el18" );
+                int el19 = taskJson.getInt( "el19" );
+                int el110 = taskJson.getInt( "el110" );
+                int el111 = taskJson.getInt( "el111" );
+                int el112 = taskJson.getInt( "el112" );
+
+                int el21 = taskJson.getInt( "el21" );
+                int el22 = taskJson.getInt( "el22" );
+                int el23 = taskJson.getInt( "el23" );
+                int el24 = taskJson.getInt( "el24" );
+                int el25 = taskJson.getInt( "el25" );
+                int el26 = taskJson.getInt( "el26" );
+                int el27 = taskJson.getInt( "el27" );
+                int el28 = taskJson.getInt( "el28" );
+                int el29 = taskJson.getInt( "el29" );
+                int el210 = taskJson.getInt( "el210" );
+                int el211 = taskJson.getInt( "el211" );
+                int el212 = taskJson.getInt( "el212" );
+
+                int el31 = taskJson.getInt( "el31" );
+                int el32 = taskJson.getInt( "el32" );
+                int el33 = taskJson.getInt( "el33" );
+                int el34 = taskJson.getInt( "el34" );
+                int el35 = taskJson.getInt( "el35" );
+                int el36 = taskJson.getInt( "el36" );
+                int el37 = taskJson.getInt( "el37" );
+                int el38 = taskJson.getInt( "el38" );
+                int el39 = taskJson.getInt( "el39" );
+                int el310 = taskJson.getInt( "el310" );
+                int el311 = taskJson.getInt( "el311" );
+                int el312 = taskJson.getInt( "el312" );
+
+                int[][] array = {{el11, el12, el13, el14, el15, el16, el17, el18, el19, el110, el111, el112},
+                        {el21, el22, el23, el24, el25, el26, el27, el28, el29, el210, el211, el212},
+                        {el31, el32, el33, el34, el35, el36, el37, el38, el39, el310, el311, el312}};
+
+                for(int i=0; i<3; i++){
+                    for(int j=0; j<12; j++){
+                        System.out.print(array[i][j]+ " ");
+                    }
+                    System.out.print("\n");
+                }
+
+                float[] array_yd = new float[12];
+                for(int i=0; i<12; i++){
+                    array_yd[i]=((float)(array[1][i]+array[2][i]))/array[0][i];
+                }
+
+                for(int i=0; i<12; i++){
+                    System.out.print(array_yd[i]+ " ");
+                }
+                System.out.print("\n");
+
+                float[] array_av =new float[3];
+                for (int i=0; i<3; i++){
+                    array_av[i]=0;
+                    for(int j=i; j<12; j+=3){
+                        array_av[i]+=array_yd[j];
+                    }
+                    array_av[i]/=4;
+                }
+
+               // for (int i = 0; i < 3; i++) array_av[i] /= 4;
+
+                for(int i=0; i<3; i++){
+                    System.out.print(array_av[i] + " ");
+                }
+                System.out.print("\n");
+
+                float[] array_ans = new float[3];
+                for(int i=0; i<3; i++){
+                    array_ans[i]=0;
+                    for(int j=i; j<12; j+=3){
+                        array_ans[i] += (array_yd[j] - array_av[i]) * (array_yd[j] - array_av[i]);
+                    }
+                    array_ans[i]/=3;
+                }
+
+                for(int i=0; i<3; i++){
+                    System.out.print(array_ans[i]+ " ");
+                }
+                System.out.print("\n");
+
+                String av_pr1 = Float.toString(array_av[0]);
+                String av_pr2 = Float.toString(array_av[1]);
+                String av_pr3 = Float.toString(array_av[2]);
+
+                String ans_pr1 = Float.toString(array_ans[0]);
+                String ans_pr2 = Float.toString(array_ans[1]);
+                String ans_pr3 = Float.toString(array_ans[2]);
+
+                out.write( av_pr1 + '\n' );
+                out.flush();
+                System.out.println( "я отправил среднюю удельную эф Пр1: " + av_pr1 );
+
+                out.write( av_pr2 + '\n' );
+                out.flush();
+                System.out.println( "я отправил среднюю удельную эф Пр2: " + av_pr2 );
+
+                out.write( av_pr3 + '\n' );
+                out.flush();
+                System.out.println( "я отправил среднюю удельную эф Пр3: " + av_pr3 );
+
+                out.write( ans_pr1 + '\n' );
+                out.flush();
+                System.out.println( "я отправил риски Пр1: " + ans_pr1 );
+
+                out.write( ans_pr2 + '\n' );
+                out.flush();
+                System.out.println( "я отправил риски Пр2: " + ans_pr2 );
+
+                out.write( ans_pr3 + '\n' );
+                out.flush();
+                System.out.println( "я отправил риски Пр3: " + ans_pr3 );
+
+            }
+        }
+        catch (IOException | JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+     private void getAns() throws IOException {
+         String av_pr1 = in.readLine();
+         String av_pr2 = in.readLine();
+         String av_pr3 = in.readLine();
+
+         String ans_pr1 = in.readLine();
+         String ans_pr2 = in.readLine();
+         String ans_pr3 = in.readLine();
+
+         String av_pr = in.readLine();
+
+         float av1 = Float.parseFloat(av_pr1);
+         float av2 = Float.parseFloat(av_pr2);
+         float av3 = Float.parseFloat(av_pr3);
+
+         float ans1 = Float.parseFloat(ans_pr1);
+         float ans2 = Float.parseFloat(ans_pr2);
+         float ans3 = Float.parseFloat(ans_pr3);
+
+         float av=Float.parseFloat(av_pr);
+
+         float[] array_otv={ans1, ans2, ans3};
+         float[] array_av={av1, av2, av3};
+
+         int mini = -1;
+         float min = 999999;
+
+         for(int i = 0; i < 3; i++)
+             if (min > array_otv[i] && array_av[i] >= av) {
+             mini = i;
+             min = array_otv[i];
+         }
+
+         if (mini == -1) {
+             out.write( "error" +'\n' );
+             out.flush();
+         }
+         else {
+             int mini1=mini+1;
+             String num = Integer.toString(mini1);
+             out.write( num+ '\n' );
+             out.flush();
+             System.out.println("я отправил "+ num);
+         }
+     }
+
 }

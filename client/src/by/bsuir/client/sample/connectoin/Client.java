@@ -1,5 +1,8 @@
 package by.bsuir.client.sample.connectoin;
 
+import by.bsuir.client.sample.information.Project;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.net.Socket;
 
@@ -72,4 +75,5 @@ public final class Client {
             System.err.println(e);
         }
     }
+
 }

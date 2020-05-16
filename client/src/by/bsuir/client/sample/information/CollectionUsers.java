@@ -33,6 +33,7 @@ public final class CollectionUsers{
 
     public void fillData(){
         try {
+            users.removeAll(users);
             String array = Client.getInstance().get();
             JSONArray newArray = new JSONArray( array );
             int count = newArray.length();

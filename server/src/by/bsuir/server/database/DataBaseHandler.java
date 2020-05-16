@@ -165,18 +165,18 @@ public class DataBaseHandler extends Configs {
     }
 
     public void deleteUser(Integer userId) throws SQLException, ClassNotFoundException {
-     /*   String deletion = "DELETE * FROM " + Const.USER_TABLE+ " WHERE "+ Const.USER_ID +" = "+ userId;
-        PreparedStatement prSt = null;
-        prSt = getDbConnection().prepareStatement(deletion);
-        prSt.executeUpdate();*/
         String deletion = "DELETE FROM " + Const.USER_TABLE+ " WHERE "+ Const.USER_ID +" = ?";
         PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
         prSt.setInt(1,userId);
         prSt.executeUpdate();
-
-
     }
 
+    public void deleteProject(Integer projectId) throws SQLException, ClassNotFoundException {
+        String deletion = "DELETE FROM " + Const.PROJECT_TABLE+ " WHERE "+ Const.PROJECT_ID +" = ?";
+        PreparedStatement prSt=getDbConnection().prepareStatement(deletion);
+        prSt.setInt(1,projectId);
+        prSt.executeUpdate();
+    }
 
 
     //потом посмотрю зачем надо
@@ -233,22 +233,23 @@ public class DataBaseHandler extends Configs {
         return result;
     }
 
-    public String projectInput(String director, String operator, String presenter,
+    public String projectInput(int id, String director, String operator, String presenter,
                              String projectName, int assesment, String format, int studioNumber){
-        String insert = "INSERT INTO " + Const.PROJECT_TABLE + "(" + Const.PROJECT_DIRECTOR + "," + Const.PROJECT_OPERATOR + "," +
+        String insert = "INSERT INTO " + Const.PROJECT_TABLE + "(" + Const.PROJECT_ID + ","+ Const.PROJECT_DIRECTOR + "," + Const.PROJECT_OPERATOR + "," +
                 Const.PROJECT_PRESENTER + "," + Const.PROJECT_NAME + "," + Const.PROJECT_ASSESMENT + "," + Const.PROJECT_FORMAT
                 + "," + Const.PROJECT_STUDIONUMBER+ ")" +
-                "VALUES(?,?,?,?,?,?,?)";
+                "VALUES(?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-            prSt.setString(1, director);
-            prSt.setString(2, operator);
-            prSt.setString(3, presenter);
-            prSt.setString(4, projectName);
-            prSt.setInt(5, assesment);
-            prSt.setString(6, format);
-            prSt.setInt(7, studioNumber);
+            prSt.setInt(1, id);
+            prSt.setString(2, director);
+            prSt.setString(3, operator);
+            prSt.setString(4, presenter);
+            prSt.setString(5, projectName);
+            prSt.setInt(6, assesment);
+            prSt.setString(7, format);
+            prSt.setInt(8, studioNumber);
 
             prSt.executeUpdate();
         } catch (SQLException | ClassNotFoundException e) {
@@ -257,6 +258,7 @@ public class DataBaseHandler extends Configs {
 
         JSONObject userJson = new JSONObject();
         try {
+            userJson.put("id", id);
             userJson.put("director", director);
             userJson.put("operator", operator);
             userJson.put("presenter", presenter);

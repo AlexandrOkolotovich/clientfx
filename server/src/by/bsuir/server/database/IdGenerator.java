@@ -20,9 +20,7 @@ public class IdGenerator {
 
         switch (type){
             case "user":last = "SELECT MAX("+Const.USER_ID+") FROM "+ Const.USER_TABLE; break;
-         //   case "report":last = "SELECT MAX("+Const.REPORTS_ID+") FROM "+ Const.REPORT_TABLE; break;
-         //   case "company": last = "SELECT MAX("+Const.COMPANY_ID+") FROM "+ Const.COMPANY_TABLE;break;
-         //   case "usd": last ="SELECT MAX("+Const.USD_ID+") FROM "+ Const.USD_TABLE; break;
+            case "project":last = "SELECT MAX("+Const.PROJECT_ID+") FROM "+ Const.PROJECT_TABLE; break;
         }
 
         DataBaseHandler handler = new DataBaseHandler();
